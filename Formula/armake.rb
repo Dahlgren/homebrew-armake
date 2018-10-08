@@ -9,6 +9,7 @@ class Armake < Formula
   depends_on "openssl" => :build
 
   def install
+    inreplace "src/unpack.h", "4096", "16384"
     inreplace "Makefile", "  ", "\t"
     system "make"
     bin.install Dir["bin/*"]
